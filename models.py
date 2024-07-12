@@ -12,3 +12,6 @@ class TDocuments(Base):
     fetch_time = Column(Numeric(20, 0), nullable=False)
     text = Column(String, nullable=False)
     first_fetch_time = Column(Numeric(20, 0), nullable=False)
+
+    def to_dict(self):
+        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
