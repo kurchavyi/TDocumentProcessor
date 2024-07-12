@@ -27,21 +27,21 @@ class DocumentsProcessor:
                 document.fetch_time = fetch_time
                 document.text = text
         else:
-            self.__insert(url, pub_date, fetch_time, text, fetch_time)
+            document = new_document = TDocuments(
+                url=url,
+                pub_date=pub_date,
+                fetch_time=fetch_time,
+                text=text,
+                first_fetch_time=fetch_time
+        )
+            self.__insert(document)
         return document
 
 
-    def __insert(self, url, pub_date, fetch_time, text, first_fetch_time) -> None:
+    def __insert(self, new_document) -> None:
         """
             Add document in database.
         """
-        new_document = TDocuments(
-            url=url,
-            pub_date=pub_date,
-            fetch_time=fetch_time,
-            text=text,
-            first_fetch_time=first_fetch_time
-        )
         self.session.add(new_document)
         self.session.commit()
         return new_document
