@@ -15,3 +15,4 @@ message_dict = {
 # for i in range(1000):
 msg = json.dumps(message_dict)
 producer.produce(topic_name, value=msg.encode("utf-8"))
+producer.flush()
