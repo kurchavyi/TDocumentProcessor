@@ -1,13 +1,15 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
+
 from models import TDocuments
+from database_creator import get_database_path
 
 
 class DocumentsProcessor:
-    def __init__(self, DATABASE_URL) -> None:
+    def __init__(self) -> None:
         Base = declarative_base()
-        self.engine = create_engine(DATABASE_URL)
+        self.engine = create_engine(get_database_path())
         Base.metadata.create_all(self.engine)
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
