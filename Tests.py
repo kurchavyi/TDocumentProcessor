@@ -1,12 +1,10 @@
 from  unittest import TestCase, main
 from documents_processor import DocumentsProcessor
-from database_creator import get_database_path
 
 class TestProcessor(TestCase):
 
     def setUp(self):
-        databse_url = get_database_path()
-        self.processor = DocumentsProcessor(databse_url)
+        self.processor = DocumentsProcessor()
 
     def test_insert_new_document(self):
         url = "4"
