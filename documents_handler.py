@@ -27,13 +27,9 @@ class DocumentsHandler:
                 else:
                     print(msg.error())
                     break
-            
-            tdocument = json.loads(msg.value().decode('utf-8'))
+            dict_document = json.loads(msg.value().decode('utf-8'))
             print('Received message: {}'.format(msg.value().decode('utf-8')))
-            res = self.processor.process_document(url=tdocument['url'],
-                                            pub_date=tdocument['pub_date'],
-                                            fetch_time=tdocument['fetch_time'],
-                                            text=tdocument['text'])
+            res = self.processor.process_document(dict_document)
             self.producer.produce('output_documents', json.dumps(res.to_dict()))
         self.consumer.close()
 
