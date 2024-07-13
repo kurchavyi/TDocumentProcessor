@@ -34,15 +34,8 @@ class DocumentsHandler:
                                             pub_date=tdocument['pub_date'],
                                             fetch_time=tdocument['fetch_time'],
                                             text=tdocument['text'])
-            print(type(self.int_convert_tdocuments_col(res.to_dict())))
-            print(res.to_dict())
-            self.producer.produce('output_documents', json.dumps(self.int_convert_tdocuments_col(res.to_dict())))
+            self.producer.produce('output_documents', json.dumps(res.to_dict()))
         self.consumer.close()
-    
-    def int_convert_tdocuments_col(self, tdocument_dict):
-        for col in ['pub_date', 'fetch_time', 'first_fetch_time']:
-            tdocument_dict[col] = int(tdocument_dict[col])
-        return tdocument_dict
 
 
 if __name__ == "__main__":
