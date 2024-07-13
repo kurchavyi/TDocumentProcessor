@@ -1,8 +1,7 @@
 from sqlalchemy import create_engine, inspect
-from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from models import TDocuments
+from models import TDocuments, Base
 import os
 
 def get_database_path():
@@ -19,8 +18,6 @@ if __name__ == "__main__":
     DATABASE_URL = get_database_path()
 
     engine = create_engine(DATABASE_URL)
-
-    Base = declarative_base()
 
     Base.metadata.create_all(engine)
 
