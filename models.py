@@ -15,3 +15,7 @@ class TDocuments(Base):
 
     def to_dict(self):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
+    
+    @classmethod
+    def from_dict(cls, attr_dict):
+        return cls(**attr_dict)
