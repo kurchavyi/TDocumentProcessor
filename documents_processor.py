@@ -26,8 +26,9 @@ class DocumentsProcessor:
             if fetch_time > document.fetch_time:
                 document.fetch_time = fetch_time
                 document.text = text
+            self.session.commit()
         else:
-            document = new_document = TDocuments(
+            document = TDocuments(
                 url=url,
                 pub_date=pub_date,
                 fetch_time=fetch_time,
