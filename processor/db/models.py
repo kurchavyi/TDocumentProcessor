@@ -1,5 +1,5 @@
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, String, BigInteger
+from sqlalchemy import Column, String, Numeric
 
 
 Base = declarative_base()
@@ -8,10 +8,10 @@ Base = declarative_base()
 class TDocuments(Base):
     __tablename__ = "text_documents"
     url = Column(String, primary_key=True)
-    pub_date = Column(BigInteger, nullable=False)
-    fetch_time = Column(BigInteger, nullable=False)
+    pub_date = Column(Numeric(20, 0), nullable=False)
+    fetch_time = Column(Numeric(20, 0), nullable=False)
     text = Column(String, nullable=False)
-    first_fetch_time = Column(BigInteger, nullable=False)
+    first_fetch_time = Column(Numeric(20, 0), nullable=False)
 
     def to_dict(self):
         return {

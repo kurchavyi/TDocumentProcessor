@@ -3,16 +3,15 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 from processor.db.models import TDocuments
-from processor.db.database_creator import get_database_path
 
 
 class DocumentsProcessor:
     """
     Handle the insertion and updating of documents in a database using SQLAlchemy.
     """
-    def __init__(self) -> None:
+    def __init__(self, pg_url) -> None:
         Base = declarative_base()
-        self.engine = create_engine(get_database_path())
+        self.engine = create_engine(pg_url)
         Base.metadata.create_all(self.engine)
         Session = sessionmaker(bind=self.engine)
         self.session = Session()

@@ -2,7 +2,7 @@ from json import dumps
 from confluent_kafka import Producer
 
 
-topic_name = "new_input_documents"
+topic_name = "input_documents"
 producer = Producer({"bootstrap.servers": "localhost:9092"})
 
 message_dict = {"url": "10", "pub_date": 100, "fetch_time": 400, "text": "300"}
