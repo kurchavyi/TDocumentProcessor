@@ -1,6 +1,6 @@
 from unittest import TestCase, main
 
-from documents_processor import DocumentsProcessor
+from processor.documents_processor import DocumentsProcessor
 from models import TDocuments
 
 

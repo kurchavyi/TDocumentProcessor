@@ -3,7 +3,7 @@ import logging
 from json import loads, dumps
 from confluent_kafka import Consumer, KafkaError, Producer
 
-from documents_processor import DocumentsProcessor
+from processor.documents_processor import DocumentsProcessor
 
 
 class DocumentsHandler:
