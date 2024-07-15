@@ -6,7 +6,7 @@ Base = declarative_base()
 
 
 class TDocuments(Base):
-    __tablename__ = 'text_documents'
+    __tablename__ = "text_documents"
     url = Column(String, primary_key=True)
     pub_date = Column(BigInteger, nullable=False)
     fetch_time = Column(BigInteger, nullable=False)
@@ -14,8 +14,10 @@ class TDocuments(Base):
     first_fetch_time = Column(BigInteger, nullable=False)
 
     def to_dict(self):
-        return {column.name: getattr(self, column.name) for column in self.__table__.columns}
-    
+        return {
+            column.name: getattr(self, column.name) for column in self.__table__.columns
+        }
+
     @classmethod
-    def from_dict(cls, attr_dict):
+    def from_dict(cls, attr_dict: dict):
         return cls(**attr_dict)
