@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
-from models import TDocuments, Base
+from processor.db.models import TDocuments, Base
 import os
 
 

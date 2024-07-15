@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from models import TDocuments
-from database_creator import get_database_path
+from processor.db.models import TDocuments
+from processor.db.database_creator import get_database_path
 
 
 class DocumentsProcessor:
